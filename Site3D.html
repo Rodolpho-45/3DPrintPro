@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Print Pro — Guia Completo de Precificação e Vendas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --bg0: #04070e;
+  --bg1: #070d1a;
+  --bg2: #0a1325;
+  --bg3: #0e1c35;
+  --card: #0c1728;
+  --card-hover: #111f38;
+  --blue: #0d9cf0;
+  --blue2: #1a6ef5;
+  --blue-light: #60c8ff;
+  --blue-pale: #a8d8f8;
+  --glow: rgba(13,156,240,0.18);
+  --glow2: rgba(13,156,240,0.08);
+  --border: rgba(13,156,240,0.22);
+  --border2: rgba(13,156,240,0.10);
+  --text: #ddeeff;
+  --text2: #7ba3c8;
+  --text3: #3d6080;
+  --green: #10d090;
+  --amber: #f59e0b;
+  --red: #f04060;
+  --purple: #9b6dff;
+  --r: 10px;
+  --r2: 16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg0);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+
+/* ─── BACKGROUND ─── */
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(13,100,240,0.12) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(13,156,240,0.06) 0%,transparent 60%);pointer-events:none;z-index:0}
+.grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(13,156,240,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(13,156,240,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(4,7,14,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);padding:0 2rem}
+.nav-inner{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--blue-light);letter-spacing:-0.5px;white-space:nowrap}
+.nav-logo span{color:var(--text)}
+.nav-links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.nav-links a{color:var(--text2);font-size:13px;padding:6px 10px;border-radius:6px;text-decoration:none;white-space:nowrap;transition:all .2s}
+.nav-links a:hover{color:var(--blue-light);background:var(--glow2)}
+.nav-badge{background:var(--blue);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;font-family:'Syne',sans-serif}
+
+/* ─── LAYOUT ─── */
+.wrap{max-width:1300px;margin:0 auto;padding:0 2rem;position:relative;z-index:1}
+
+/* ─── HERO ─── */
+#hero{padding:140px 2rem 80px;text-align:center;position:relative;z-index:1}
+.hero-tag{display:inline-block;background:var(--glow);border:1px solid var(--border);color:var(--blue-light);font-size:12px;font-weight:600;padding:5px 16px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:2rem;font-family:'JetBrains Mono',monospace}
+#hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,6vw,4.8rem);font-weight:800;line-height:1.08;letter-spacing:-2px;margin-bottom:1.5rem;max-width:900px;margin-left:auto;margin-right:auto}
+#hero h1 .hl{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+#hero p{font-size:1.15rem;color:var(--text2);max-width:620px;margin:0 auto 3rem;line-height:1.7}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:var(--r);font-size:15px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;text-decoration:none;transition:all .25s}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 0 30px rgba(13,156,240,0.4)}
+.btn-primary:hover{background:var(--blue-light);box-shadow:0 0 50px rgba(13,156,240,0.6);transform:translateY(-2px)}
+.btn-secondary{background:transparent;color:var(--blue-light);border:1px solid var(--border)}
+.btn-secondary:hover{background:var(--glow);transform:translateY(-2px)}
+
+/* ─── STATS ROW ─── */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--border2);border:1px solid var(--border2);border-radius:var(--r2);overflow:hidden;margin-bottom:5rem}
+.stat{background:var(--bg1);padding:1.5rem;text-align:center}
+.stat-val{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--blue-light);line-height:1}
+.stat-label{font-size:12px;color:var(--text3);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+
+/* ─── SECTION ─── */
+section{padding:80px 0;position:relative;z-index:1}
+.section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:1rem}
+.section-sub{color:var(--text2);font-size:1.05rem;max-width:560px;line-height:1.65}
+.section-header{margin-bottom:3rem}
+
+/* ─── DIVIDER ─── */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0}
+
+/* ─── CARD ─── */
+.card{background:var(--card);border:1px solid var(--border2);border-radius:var(--r2);padding:1.5rem 1.75rem;transition:all .25s}
+.card:hover{border-color:var(--border);background:var(--card-hover)}
+.card-glow{box-shadow:0 0 40px var(--glow2)}
+.card-blue{border-color:var(--border);background:linear-gradient(135deg,var(--card),var(--bg3))}
+
+/* ─── TABS ─── */
+.tab-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:2rem;background:var(--bg1);padding:6px;border-radius:12px;border:1px solid var(--border2)}
+.tab-btn{padding:9px 18px;border-radius:8px;border:none;background:transparent;color:var(--text2);font-size:13.5px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;font-weight:500}
+.tab-btn.active{background:var(--blue);color:#fff;font-weight:600;box-shadow:0 0 20px rgba(13,156,240,0.35)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ─── CALCULATOR ─── */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+@media(max-width:900px){.calc-grid{grid-template-columns:1fr}}
+.form-group{margin-bottom:1.25rem}
+.form-label{display:flex;justify-content:space-between;font-size:13px;color:var(--text2);margin-bottom:6px;font-weight:500}
+.form-label span{color:var(--blue-light);font-family:'JetBrains Mono',monospace;font-size:12px}
+input[type="number"],input[type="range"],select{width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;transition:border-color .2s}
+input[type="number"],select{padding:10px 14px}
+input[type="number"]:focus,select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--glow)}
+input[type="range"]{-webkit-appearance:none;height:4px;background:var(--bg3);border-radius:2px;cursor:pointer;padding:0}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--blue);border:2px solid var(--blue-light);box-shadow:0 0 10px rgba(13,156,240,0.5)}
+select{cursor:pointer}
+
+.result-header{font-family:'Syne',sans-serif;font-size:13px;color:var(--text3);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1rem}
+.cost-line{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border2);font-size:14px}
+.cost-line:last-of-type{border-bottom:none}
+.cost-name{color:var(--text2);display:flex;align-items:center;gap:8px}
+.cost-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.cost-val{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:500;color:var(--text)}
+
+.price-hero{background:linear-gradient(135deg,rgba(13,156,240,0.15),rgba(26,110,245,0.08));border:1px solid var(--border);border-radius:var(--r2);padding:2rem;text-align:center;margin-top:1.5rem}
+.price-sub{font-size:12px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem;font-family:'JetBrains Mono',monospace}
+.price-big{font-family:'Syne',sans-serif;font-size:3.2rem;font-weight:800;color:var(--blue-light);line-height:1;letter-spacing:-2px}
+.price-detail{font-size:13px;color:var(--text2);margin-top:.75rem}
+
+.chart-wrap{position:relative;width:100%;height:240px}
+
+/* ─── NICHES ─── */
+.niche-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+.niche-card{background:var(--card);border:1px solid var(--border2);border-radius:var(--r2);padding:1.5rem;cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
+.niche-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--glow2),transparent);opacity:0;transition:.3s}
+.niche-card:hover{border-color:var(--border);transform:translateY(-3px);box-shadow:0 8px 40px rgba(0,0,0,0.4)}
+.niche-card:hover::before{opacity:1}
+.niche-icon{font-size:2rem;margin-bottom:.75rem}
+.niche-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.5rem}
+.niche-desc{font-size:13px;color:var(--text2);line-height:1.55;margin-bottom:1rem}
+.niche-meta{display:flex;gap:8px;flex-wrap:wrap}
+.tag{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;border:1px solid;white-space:nowrap}
+.tag-green{border-color:rgba(16,208,144,0.3);color:var(--green);background:rgba(16,208,144,0.08)}
+.tag-amber{border-color:rgba(245,158,11,0.3);color:var(--amber);background:rgba(245,158,11,0.08)}
+.tag-blue{border-color:var(--border);color:var(--blue-light);background:var(--glow2)}
+.tag-red{border-color:rgba(240,64,96,0.3);color:var(--red);background:rgba(240,64,96,0.08)}
+.niche-bar{height:3px;background:var(--bg3);border-radius:2px;margin-top:1rem;overflow:hidden}
+.niche-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--blue-light))}
+.niche-range{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue-light);margin-top:.5rem}
+
+/* ─── PLATFORMS ─── */
+.platform-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.25rem}
+.platform-card{background:var(--card);border:1px solid var(--border2);border-radius:var(--r2);padding:1.5rem;transition:all .25s}
+.platform-card:hover{border-color:var(--border);background:var(--card-hover)}
+.platform-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+.platform-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem}
+.platform-type{font-size:11px;padding:3px 8px;border-radius:5px;font-weight:600}
+.platform-stats{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem}
+.pstat{background:var(--bg2);border-radius:8px;padding:.6rem .75rem}
+.pstat-label{font-size:11px;color:var(--text3);margin-bottom:2px}
+.pstat-val{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text);font-weight:500}
+
+/* ─── FORMULA ─── */
+.formula-box{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r2);padding:1.5rem 2rem;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:2;overflow-x:auto;margin:1.5rem 0}
+.formula-line{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.fvar{color:var(--blue-light);font-weight:700}
+.fop{color:var(--text3)}
+.fdesc{color:var(--text2);font-size:12px;font-family:'DM Sans',sans-serif;margin-left:auto}
+
+/* ─── STEPS ─── */
+.steps{display:grid;gap:1rem}
+.step{display:flex;gap:1.25rem;align-items:flex-start}
+.step-num{width:36px;height:36px;border-radius:50%;background:var(--glow);border:1px solid var(--border);color:var(--blue-light);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;flex-shrink:0}
+.step-body{flex:1;padding-top:4px}
+.step-title{font-weight:600;margin-bottom:4px;font-size:15px}
+.step-text{color:var(--text2);font-size:14px;line-height:1.6}
+
+/* ─── TABLE ─── */
+.data-table{width:100%;border-collapse:collapse;font-size:14px}
+.data-table th{background:var(--bg2);color:var(--text3);font-size:11px;text-transform:uppercase;letter-spacing:1px;padding:10px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-weight:500;border-bottom:1px solid var(--border2)}
+.data-table td{padding:11px 14px;border-bottom:1px solid var(--border2);color:var(--text2);font-size:14px;vertical-align:middle}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:var(--glow2)}
+.mono{font-family:'JetBrains Mono',monospace;color:var(--text)}
+
+/* ─── ACCORDION ─── */
+.accordion-item{border-bottom:1px solid var(--border2)}
+.accordion-item:first-child{border-top:1px solid var(--border2)}
+.accordion-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;background:none;border:none;color:var(--text);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;text-align:left;gap:1rem}
+.accordion-btn:hover{color:var(--blue-light)}
+.accordion-icon{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.3s;color:var(--blue-light);font-size:16px;line-height:1}
+.accordion-btn.open .accordion-icon{transform:rotate(45deg);background:var(--glow);border-color:var(--blue)}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s}
+.accordion-body.open{max-height:600px;padding-bottom:1.25rem}
+.accordion-body p{color:var(--text2);font-size:14.5px;line-height:1.7}
+.accordion-body ul{color:var(--text2);font-size:14px;line-height:1.8;padding-left:1.25rem}
+.accordion-body li{margin-bottom:4px}
+.accordion-body strong{color:var(--text)}
+.accordion-body code{background:var(--bg2);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--blue-light)}
+
+/* ─── ALERT ─── */
+.alert{border-radius:var(--r);padding:1rem 1.25rem;font-size:14px;line-height:1.6;display:flex;gap:.75rem;align-items:flex-start;margin-bottom:1rem}
+.alert-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.alert-blue{background:rgba(13,156,240,0.09);border:1px solid rgba(13,156,240,0.25)}
+.alert-amber{background:rgba(245,158,11,0.09);border:1px solid rgba(245,158,11,0.3)}
+.alert-red{background:rgba(240,64,96,0.09);border:1px solid rgba(240,64,96,0.3)}
+.alert-green{background:rgba(16,208,144,0.09);border:1px solid rgba(16,208,144,0.3)}
+
+/* ─── ROADMAP ─── */
+.roadmap{position:relative;padding-left:2rem}
+.roadmap::before{content:'';position:absolute;left:10px;top:10px;bottom:10px;width:1px;background:linear-gradient(180deg,var(--blue),transparent)}
+.roadmap-item{position:relative;margin-bottom:2.5rem}
+.roadmap-dot{position:absolute;left:-2rem;top:4px;width:20px;height:20px;border-radius:50%;background:var(--bg0);border:2px solid var(--blue);display:flex;align-items:center;justify-content:center}
+.roadmap-dot::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue-light)}
+.roadmap-phase{font-size:11px;color:var(--blue);font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.roadmap-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.roadmap-text{color:var(--text2);font-size:14px;line-height:1.6}
+.roadmap-items{display:flex;flex-wrap:wrap;gap:6px;margin-top:.75rem}
+.r-tag{font-size:12px;padding:3px 10px;border-radius:20px;background:var(--bg2);border:1px solid var(--border2);color:var(--text2)}
+
+/* ─── GLOSSARY ─── */
+.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.glossary-item{background:var(--card);border:1px solid var(--border2);border-radius:var(--r);padding:1rem 1.25rem}
+.glossary-term{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--blue-light);font-weight:700;margin-bottom:4px}
+.glossary-def{font-size:13px;color:var(--text2);line-height:1.55}
+
+/* ─── ROI ─── */
+.roi-output{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.75rem;margin-top:1.5rem}
+.roi-card{background:var(--bg2);border-radius:var(--r);padding:1rem;text-align:center}
+.roi-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.roi-val{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--blue-light)}
+
+/* ─── GRID HELPERS ─── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
+@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+
+/* ─── PROGRESS ─── */
+.prog-row{margin-bottom:1rem}
+.prog-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}
+.prog-label-name{color:var(--text2)}
+.prog-label-val{font-family:'JetBrains Mono',monospace;color:var(--blue-light);font-size:12px}
+.prog-bar{height:6px;background:var(--bg2);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--blue2),var(--blue-light));transition:width 1s ease}
+
+/* ─── COMPARISON TABLE WRAPPER ─── */
+.table-wrap{overflow-x:auto;border-radius:var(--r2);border:1px solid var(--border2)}
+
+/* ─── TOOLTIP ─── */
+.has-tooltip{position:relative;cursor:help;border-bottom:1px dashed var(--text3)}
+.tooltip-text{position:absolute;bottom:110%;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--text);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;box-shadow:0 4px 20px rgba(0,0,0,0.5)}
+.has-tooltip:hover .tooltip-text{opacity:1}
+
+/* ─── COUNTER ANIMATION ─── */
+@keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.count-animate{animation:countUp .6s ease both}
+
+/* ─── MISC ─── */
+.text-blue{color:var(--blue-light)}
+.text-green{color:var(--green)}
+.text-amber{color:var(--amber)}
+.text-red{color:var(--red)}
+.text-muted{color:var(--text2)}
+.mono{font-family:'JetBrains Mono',monospace}
+.fw700{font-weight:700}
+hr.section-line{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent);margin:3rem 0}
+
+/* ─── SOURCES BAR ─── */
+.sources-bar{background:var(--bg1);border:1px solid var(--border2);border-radius:var(--r);padding:.75rem 1.25rem;font-size:12px;color:var(--text3);display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:2rem}
+.sources-bar strong{color:var(--text2);margin-right:4px}
+.src{background:var(--bg2);border-radius:4px;padding:2px 8px;color:var(--text3);border:1px solid var(--border2)}
+
+/* ─── FOOTER ─── */
+footer{background:var(--bg1);border-top:1px solid var(--border2);padding:3rem 2rem;text-align:center;position:relative;z-index:1}
+footer p{color:var(--text3);font-size:13px;line-height:1.8}
+footer strong{color:var(--text2)}
+
+/* ─── SCROLL INDICATOR ─── */
+.back-top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;color:#fff;font-size:18px;box-shadow:0 0 20px rgba(13,156,240,0.4);z-index:200;transition:all .2s;opacity:0;pointer-events:none}
+.back-top.show{opacity:1;pointer-events:auto}
+.back-top:hover{transform:translateY(-3px);box-shadow:0 0 35px rgba(13,156,240,0.6)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  #hero{padding:100px 1.5rem 60px}
+  .wrap{padding:0 1rem}
+  nav{padding:0 1rem}
+  .tab-btn{font-size:12px;padding:7px 12px}
+}
+
+/* ─── ERROR BOX ─── */
+.error-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
+.error-card{border:1px solid rgba(240,64,96,0.25);background:rgba(240,64,96,0.06);border-radius:var(--r2);padding:1.25rem 1.5rem}
+.error-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red);letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem}
+.error-title{font-weight:700;margin-bottom:.4rem;font-size:15px}
+.error-text{font-size:13px;color:var(--text2);line-height:1.55}
+.error-fix{font-size:12px;color:var(--green);margin-top:.75rem;display:flex;gap:6px;align-items:flex-start}
+
+/* pulse */
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(13,156,240,0.3)}50%{box-shadow:0 0 0 8px rgba(13,156,240,0)}}
+.pulse{animation:pulse 2.5s infinite}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">3D<span>Print</span>Pro</div>
+    <div class="nav-links">
+      <a href="#calculadora">Calculadora</a>
+      <a href="#formula">Fórmula</a>
+      <a href="#nichos">Nichos</a>
+      <a href="#plataformas">Plataformas</a>
+      <a href="#marketing">Marketing</a>
+      <a href="#legal">Legal & MEI</a>
+      <a href="#roi">ROI</a>
+      <a href="#roadmap">Roteiro</a>
+      <a href="#faq">FAQ</a>
+      <a href="#erros">Erros</a>
+      <a href="#glossario">Glossário</a>
+    </div>
+    <div class="nav-badge">2025</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap" style="text-align:center">
+    <div class="hero-tag">Guia Definitivo · Brasil · 2025</div>
+    <h1>Como <span class="hl">precificar</span> e<br>vender impressão 3D</h1>
+    <p>Tudo que você precisa para transformar sua impressora 3D em um negócio lucrativo: cálculos reais, nichos validados, plataformas, estratégias e muito mais.</p>
+    <div class="hero-ctas">
+      <a href="#calculadora" class="btn btn-primary pulse">Usar calculadora</a>
+      <a href="#nichos" class="btn btn-secondary">Explorar nichos</a>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat"><div class="stat-val" id="s1">0</div><div class="stat-label">Seções detalhadas</div></div>
+      <div class="stat"><div class="stat-val" id="s2">0</div><div class="stat-label">Nichos mapeados</div></div>
+      <div class="stat"><div class="stat-val" id="s3">0</div><div class="stat-label">Plataformas analisadas</div></div>
+      <div class="stat"><div class="stat-val" id="s4">0</div><div class="stat-label">Fontes pesquisadas</div></div>
+      <div class="stat"><div class="stat-val" id="s5">0</div><div class="stat-label">Mercado global (bi USD)</div></div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- FORMULA -->
+<section id="formula">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">01 — Base de tudo</div>
+      <h2 class="section-title">A fórmula de precificação</h2>
+      <p class="section-sub">Nunca precifique "no feeling". Cada centavo tem que estar justificado — ou você vai trabalhar de graça.</p>
+    </div>
+
+    <div class="formula-box">
+      <div class="formula-line">
+        <span class="fvar">Preço de Venda</span>
+        <span class="fop">=</span>
+        <span style="color:var(--text)">( <span class="fvar">Material</span> + <span class="fvar">Energia</span> + <span class="fvar">Depreciação</span> + <span class="fvar">Mão de Obra</span> + <span class="fvar">Custos Fixos</span> + <span class="fvar">Falhas</span> ) × ( 1 + <span class="fvar">Margem%</span> )</span>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <div class="step-title">Custo do material (filamento/resina)</div>
+              <div class="step-text">
+                <code class="mono" style="font-size:13px;background:var(--bg2);padding:6px 10px;border-radius:6px;display:block;margin-top:6px;color:var(--blue-light)">(gramas usadas ÷ 1000) × preço do rolo (R$/kg)</code>
+                <br>Exemplo: 80g de PLA a R$100/kg = <strong class="text-blue">R$ 8,00</strong>. Lembre-se de incluir suportes e purgas.
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <div class="step-title">Energia elétrica</div>
+              <div class="step-text">
+                <code class="mono" style="font-size:13px;background:var(--bg2);padding:6px 10px;border-radius:6px;display:block;margin-top:6px;color:var(--blue-light)">(watts ÷ 1000) × horas × custo kWh</code>
+                <br>Uma Bambu A1 (~200W) por 5h, tarifa R$0,95/kWh = <strong class="text-blue">R$ 0,95</strong>. Pequeno, mas conta na escala.
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <div class="step-title">Depreciação da impressora</div>
+              <div class="step-text">
+                <code class="mono" style="font-size:13px;background:var(--bg2);padding:6px 10px;border-radius:6px;display:block;margin-top:6px;color:var(--blue-light)">valor da impressora ÷ vida útil estimada (horas)</code>
+                <br>R$3.000 ÷ 5.000h = <strong class="text-blue">R$0,60/h</strong>. Inclua manutenção (~20% do valor da máquina por ano).
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-body">
+              <div class="step-title">Mão de obra</div>
+              <div class="step-text">Inclua <em>todo</em> o tempo: preparação do arquivo, fatiamento, monitoramento, remoção de suportes, acabamento. Cobrar menos de R$15/h é trabalhar de graça.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-body">
+              <div class="step-title">Custos fixos rateados</div>
+              <div class="step-text">Internet, aluguel do espaço, software CAD, embalagens, taxas bancárias, plataforma de e-commerce. Divida pelo número de peças produzidas/mês.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">06</div>
+            <div class="step-body">
+              <div class="step-title">Taxa de falha</div>
+              <div class="step-text">Reserve 5–12% do custo total para cobrir impressões falhas, retrabalhos e material desperdiçado. É uma provisão real — não um opcional.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">07</div>
+            <div class="step-body">
+              <div class="step-title">Margem de lucro</div>
+              <div class="step-text">Aplique <strong class="text-green">30% no mínimo</strong> para commodities, 50–80% para produtos standard e <strong class="text-green">100–200%</strong> para personalizados e artísticos. Não esqueça das taxas do marketplace.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card card-glow" style="margin-bottom:1.25rem">
+          <div class="result-header">Referência de preço por hora (mercado BR 2025)</div>
+          <div class="prog-row">
+            <div class="prog-label"><span class="prog-label-name">Iniciante / commodity</span><span class="prog-label-val">R$ 15–25/h</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:25%"></div></div>
+          </div>
+          <div class="prog-row">
+            <div class="prog-label"><span class="prog-label-name">Intermediário / nicho</span><span class="prog-label-val">R$ 30–60/h</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:55%"></div></div>
+          </div>
+          <div class="prog-row">
+            <div class="prog-label"><span class="prog-label-name">Técnico / industrial</span><span class="prog-label-val">R$ 70–120/h</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:80%"></div></div>
+          </div>
+          <div class="prog-row">
+            <div class="prog-label"><span class="prog-label-name">B2B / prototipagem premium</span><span class="prog-label-val">R$ 150–300/h</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:1.25rem">
+          <div class="result-header">Taxas de marketplace (deduzir do preço)</div>
+          <div class="table-wrap" style="border:none">
+            <table class="data-table">
+              <tr><th>Plataforma</th><th>Taxa de venda</th><th>Repasse</th></tr>
+              <tr><td>Mercado Livre (clássico)</td><td class="mono text-amber">~12%</td><td class="mono">D+14</td></tr>
+              <tr><td>Mercado Livre (premium)</td><td class="mono text-amber">~16%</td><td class="mono">D+14</td></tr>
+              <tr><td>Shopee</td><td class="mono text-green">~6%</td><td class="mono">D+7</td></tr>
+              <tr><td>Elo7</td><td class="mono text-green">~8%</td><td class="mono">D+7</td></tr>
+              <tr><td>Etsy</td><td class="mono text-amber">~13%</td><td class="mono">D+3</td></tr>
+              <tr><td>MyMiniFactory</td><td class="mono text-green">~8%</td><td class="mono">Mensal</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="alert alert-amber">
+          <span class="alert-icon">⚡</span>
+          <div><strong>Regra de ouro:</strong> some as taxas do marketplace + impostos (MEI ~5%, Simples ~6–15%) antes de definir o preço final. Um produto que "parece" dar lucro pode estar gerando prejuízo.</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-line">
+
+    <!-- Tabela de filamentos -->
+    <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem">Custo real por kg de filamento (referências 2025)</h3>
+    <div class="table-wrap">
+      <table class="data-table" style="min-width:700px">
+        <thead><tr>
+          <th>Material</th><th>Preço médio BR (R$/kg)</th><th>Indicado para</th><th>Dificuldade</th><th>Resistência</th><th>Coeficiente de custo</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="fw700">PLA</td><td class="mono">R$ 80–140</td><td>Decoração, protótipos, iniciantes</td><td><span class="tag tag-green">Fácil</span></td><td class="text-muted">Baixa a média</td><td class="mono">1.0×</td></tr>
+          <tr><td class="fw700">PETG</td><td class="mono">R$ 90–160</td><td>Peças funcionais, externos</td><td><span class="tag tag-blue">Médio</span></td><td class="text-muted">Média a alta</td><td class="mono">1.2×</td></tr>
+          <tr><td class="fw700">ABS / ASA</td><td class="mono">R$ 90–170</td><td>Automotivo, exterior UV</td><td><span class="tag tag-amber">Difícil</span></td><td class="text-muted">Alta</td><td class="mono">1.3×</td></tr>
+          <tr><td class="fw700">TPU / Flexível</td><td class="mono">R$ 120–220</td><td>Solas, borrachas, protetores</td><td><span class="tag tag-amber">Difícil</span></td><td class="text-muted">Flexível</td><td class="mono">1.8×</td></tr>
+          <tr><td class="fw700">Nylon (PA)</td><td class="mono">R$ 180–350</td><td>Engrenagens, peças mecânicas</td><td><span class="tag tag-red">Avançado</span></td><td class="text-muted">Muito alta</td><td class="mono">2.5×</td></tr>
+          <tr><td class="fw700">Resina SLA/MSLA</td><td class="mono">R$ 100–280/L</td><td>Miniaturas, joias, odonto</td><td><span class="tag tag-amber">Médio</span></td><td class="text-muted">Alta (frágil)</td><td class="mono">2.0×</td></tr>
+          <tr><td class="fw700">PLA CF / PETG CF</td><td class="mono">R$ 200–450</td><td>Aeroespacial, técnico premium</td><td><span class="tag tag-red">Avançado</span></td><td class="text-muted">Muito alta</td><td class="mono">3.5×</td></tr>
+          <tr><td class="fw700">PLA Silk / Metálico</td><td class="mono">R$ 130–220</td><td>Decoração premium, joias</td><td><span class="tag tag-green">Fácil</span></td><td class="text-muted">Média</td><td class="mono">1.7×</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--text3);margin-top:.75rem">* Preços médios coletados em lojas brasileiras (3D Prime, Filamentos 3D Brasil, National 3D, Minha 3D) em 2025. Variam conforme marca e câmbio.</p>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- CALCULADORA -->
+<section id="calculadora">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">02 — Ferramenta central</div>
+      <h2 class="section-title">Calculadora avançada de custos</h2>
+      <p class="section-sub">Preencha todos os campos para obter o preço ideal. Inclui todos os custos reais que a maioria dos vendedores ignora.</p>
+    </div>
+
+    <div class="calc-grid">
+      <!-- LEFT: INPUTS -->
+      <div>
+        <div class="card" style="margin-bottom:1.25rem">
+          <div class="result-header">Material</div>
+          <div class="form-group">
+            <div class="form-label">Filamento utilizado (gramas) <span id="lbl-g">50g</span></div>
+            <input type="range" id="c-grams" min="1" max="500" value="50" step="1" oninput="updateCalc()">
+          </div>
+          <div class="form-group">
+            <div class="form-label">Preço do rolo 1kg (R$) <span id="lbl-sp">R$100</span></div>
+            <input type="range" id="c-spool" min="50" max="600" value="100" step="5" oninput="updateCalc()">
+          </div>
+          <div class="form-group">
+            <div class="form-label">Taxa de falha / retrabalho (%) <span id="lbl-fail">5%</span></div>
+            <input type="range" id="c-fail" min="0" max="30" value="5" step="1" oninput="updateCalc()">
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:1.25rem">
+          <div class="result-header">Energia & Tempo</div>
+          <div class="form-group">
+            <div class="form-label">Tempo de impressão (horas) <span id="lbl-h">4h</span></div>
+            <input type="range" id="c-hours" min="0.25" max="48" value="4" step="0.25" oninput="updateCalc()">
+          </div>
+          <div class="form-group">
+            <div class="form-label">Consumo da impressora (W) <span id="lbl-w">200W</span></div>
+            <input type="range" id="c-watts" min="50" max="600" value="200" step="10" oninput="updateCalc()">
+          </div>
+          <div class="form-group">
+            <div class="form-label">Custo do kWh (R$) <span id="lbl-kwh">R$0,85</span></div>
+            <input type="range" id="c-kwh" min="0.40" max="2.00" value="0.85" step="0.01" oninput="updateCalc()">
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:1.25rem">
+          <div class="result-header">Mão de obra & Depreciação</div>
+          <div class="form-group">
+            <div class="form-label">Mão de obra — sua hora (R$/h) <span id="lbl-lb">R$15/h</span></div>
+            <input type="range" id="c-labor" min="0" max="150" value="15" step="1" oninput="updateCalc()">
+          </div>
+          <div class="form-group">
+            <div class="form-label">Tempo total de trabalho (h) <span id="lbl-lh">1h</span></div>
+            <input type="range" id="c-laborh" min="0.1" max="10" value="1" step="0.1" oninput="updateCalc()">
+          </div>
+          <div class="form-group">
+            <div class="form-label">Valor da impressora (R$) <span id="lbl-pc">R$3000</span></div>
+            <input type="range" id="c-printer" min="500" max="30000" value="3000" step="500" oninput="updateCalc()">
+          </div>
+          <div class="form-group">
+            <div class="form-label">Vida útil estimada (horas) <span id="lbl-ul">5000h</span></div>
+            <input type="range" id="c-life" min="1000" max="20000" value="5000" step="500" oninput="updateCalc()">
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="result-header">Comercialização</div>
+          <div class="form-group">
+            <div class="form-label">Custos fixos rateados (R$) <span id="lbl-fix">R$2</span></div>
+            <input type="range" id="c-fixed" min="0" max="50" value="2" step="0.5" oninput="updateCalc()">
+          </div>
+          <div class="form-group">
+            <div class="form-label">Taxa de marketplace (%) <span id="lbl-mkt">12%</span></div>
+            <input type="range" id="c-mkt" min="0" max="25" value="12" step="0.5" oninput="updateCalc()">
+          </div>
+          <div class="form-group">
+            <div class="form-label">Embalagem + frete (R$) <span id="lbl-pkg">R$5</span></div>
+            <input type="range" id="c-pkg" min="0" max="50" value="5" step="0.5" oninput="updateCalc()">
+          </div>
+          <div class="form-group">
+            <div class="form-label">Margem de lucro desejada (%) <span id="lbl-mg">50%</span></div>
+            <input type="range" id="c-margin" min="10" max="300" value="50" step="5" oninput="updateCalc()">
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: RESULTS -->
+      <div>
+        <div class="card card-glow" style="margin-bottom:1.25rem">
+          <div class="result-header">Breakdown de custos</div>
+          <div id="cost-lines">
+            <div class="cost-line"><span class="cost-name"><span class="cost-dot" style="background:#0d9cf0"></span>Filamento</span><span class="cost-val" id="cr-mat">R$ 0,00</span></div>
+            <div class="cost-line"><span class="cost-name"><span class="cost-dot" style="background:#1a6ef5"></span>Energia elétrica</span><span class="cost-val" id="cr-energy">R$ 0,00</span></div>
+            <div class="cost-line"><span class="cost-name"><span class="cost-dot" style="background:#60c8ff"></span>Mão de obra</span><span class="cost-val" id="cr-labor">R$ 0,00</span></div>
+            <div class="cost-line"><span class="cost-name"><span class="cost-dot" style="background:#9b6dff"></span>Depreciação</span><span class="cost-val" id="cr-depr">R$ 0,00</span></div>
+            <div class="cost-line"><span class="cost-name"><span class="cost-dot" style="background:#f59e0b"></span>Custos fixos</span><span class="cost-val" id="cr-fixed">R$ 0,00</span></div>
+            <div class="cost-line"><span class="cost-name"><span class="cost-dot" style="background:#f04060"></span>Taxa de falha</span><span class="cost-val" id="cr-fail">R$ 0,00</span></div>
+            <div class="cost-line"><span class="cost-name"><span class="cost-dot" style="background:#10d090"></span>Embalagem + frete</span><span class="cost-val" id="cr-pkg">R$ 0,00</span></div>
+            <div class="cost-line" style="border-top:1px solid var(--border);margin-top:4px;padding-top:12px"><span class="cost-name" style="color:var(--text);font-weight:600">Custo total</span><span class="cost-val text-blue fw700" id="cr-total">R$ 0,00</span></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:1.25rem">
+          <div class="result-header">Distribuição de custos</div>
+          <div class="chart-wrap" style="height:220px">
+            <canvas id="costChart" role="img" aria-label="Gráfico de pizza mostrando a distribuição dos custos de impressão 3D">Distribuição de custos de impressão 3D</canvas>
+          </div>
+        </div>
+
+        <div class="price-hero">
+          <div class="price-sub">Preço de venda sugerido</div>
+          <div class="price-big" id="cr-price">R$ 0,00</div>
+          <div class="price-detail">Lucro líquido estimado: <strong class="text-green" id="cr-profit">R$ 0,00</strong> &nbsp;|&nbsp; Margem real: <strong class="text-green" id="cr-pct">0%</strong></div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border2);display:grid;grid-template-columns:1fr 1fr;gap:.75rem;font-size:13px;text-align:left">
+            <div style="background:var(--bg2);border-radius:8px;padding:.75rem">
+              <div style="color:var(--text3);font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Preço mínimo</div>
+              <div class="mono text-amber" id="cr-min">R$ 0,00</div>
+            </div>
+            <div style="background:var(--bg2);border-radius:8px;padding:.75rem">
+              <div style="color:var(--text3);font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Com tx. marketplace</div>
+              <div class="mono text-blue" id="cr-mktprice">R$ 0,00</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-blue" style="margin-top:1rem">
+          <span class="alert-icon">💡</span>
+          <div id="cr-tip" style="font-size:13.5px">Preencha os campos para receber dicas personalizadas sobre sua precificação.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- NICHOS -->
+<section id="nichos">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">03 — Onde o dinheiro está</div>
+      <h2 class="section-title">Nichos mais lucrativos em 2025</h2>
+      <p class="section-sub">Baseado em dados de vendas do Mercado Livre, Etsy, Shopee, pesquisas de makers brasileiros e relatórios do mercado global.</p>
+    </div>
+
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('nichos-tab','all',this)">Todos</button>
+      <button class="tab-btn" onclick="switchTab('nichos-tab','consumo',this)">Consumo</button>
+      <button class="tab-btn" onclick="switchTab('nichos-tab','b2b',this)">B2B / Industrial</button>
+      <button class="tab-btn" onclick="switchTab('nichos-tab','geek',this)">Geek / Games</button>
+      <button class="tab-btn" onclick="switchTab('nichos-tab','decor',this)">Decoração</button>
+    </div>
+
+    <div id="nichos-tab">
+    <div class="niche-grid">
+
+      <div class="niche-card" data-cat="geek">
+        <div class="niche-icon">⚔️</div>
+        <div class="niche-name">Miniaturas RPG / Warhammer</div>
+        <div class="niche-desc">Dungeon & Dragons, Warhammer, jogos de tabuleiro. Comunidade apaixonada, disposta a pagar por qualidade. Alta demanda constante no Brasil e exterior.</div>
+        <div class="niche-meta">
+          <span class="tag tag-green">Alta margem</span>
+          <span class="tag tag-blue">Demanda constante</span>
+        </div>
+        <div class="niche-bar"><div class="niche-fill" style="width:95%"></div></div>
+        <div class="niche-range">R$ 20–300+ por peça · Margem 80–200%</div>
+      </div>
+
+      <div class="niche-card" data-cat="decor">
+        <div class="niche-icon">🏠</div>
+        <div class="niche-name">Decoração personalizada</div>
+        <div class="niche-desc">Vasos, luminárias, quadros texturizados, porta-retratos, organize seu espaço. Público amplo, fácil de abordar em datas comemorativas.</div>
+        <div class="niche-meta">
+          <span class="tag tag-green">Alto volume</span>
+          <span class="tag tag-amber">Sazonal</span>
+        </div>
+        <div class="niche-bar"><div class="niche-fill" style="width:88%"></div></div>
+        <div class="niche-range">R$ 25–250 por peça · Margem 60–120%</div>
+      </div>
+
+      <div class="niche-card" data-cat="b2b">
+        <div class="niche-icon">🏗️</div>
+        <div class="niche-name">Maquetes arquitetônicas</div>
+        <div class="niche-desc">Escritórios de arquitetura e engenharia pagam muito bem por modelos físicos profissionais. Clientes recorrentes e ticket médio altíssimo.</div>
+        <div class="niche-meta">
+          <span class="tag tag-amber">Ticket alto</span>
+          <span class="tag tag-blue">B2B recorrente</span>
+        </div>
+        <div class="niche-bar"><div class="niche-fill" style="width:82%"></div></div>
+        <div class="niche-range">R$ 300–8.000 por projeto · Margem 100–300%</div>
+      </div>
+
+      <div class="niche-card" data-cat="b2b">
+        <div class="niche-icon">🔧</div>
+        <div class="niche-name">Peças industriais / sob demanda</div>
+        <div class="niche-desc">Gabaritos, espaçadores, tampas de proteção, peças de reposição para máquinas. Empresas pagam muito por agilidade — é um problema de urgência.</div>
+        <div class="niche-meta">
+          <span class="tag tag-amber">Urgência = premium</span>
+          <span class="tag tag-green">Recorrente</span>
+        </div>
+        <div class="niche-bar"><div class="niche-fill" style="width:80%"></div></div>
+        <div class="niche-range">R$ 50–2.000 por peça · Margem 80–250%</div>
+      </div>
+
+      <div class="niche-card" data-cat="consumo">
+        <div class="niche-icon">🎉</div>
+        <div class="niche-name">Brindes e lembranças personalizados</div>
+        <div class="niche-desc">Casamentos, formaturas, aniversários, eventos corporativos. Pedidos em lote garantem receita previsível. Alta demanda em sazonalidades.</div>
+        <div class="niche-meta">
+          <span class="tag tag-blue">Volume em lote</span>
+          <span class="tag tag-amber">Sazonal</span>
+        </div>
+        <div class="niche-bar"><div class="niche-fill" style="width:78%"></div></div>
+        <div class="niche-range">R$ 8–80 por unidade · Lotes de 50–500 un.</div>
+      </div>
+
+      <div class="niche-card" data-cat="geek">
+        <div class="niche-icon">🚁</div>
+        <div class="niche-name">Drones / FPV / Aeromodelismo</div>
+        <div class="niche-desc">Hélices, carenagens, suportes de câmera, landing gears, estruturas. Mercado enorme, pouco atendido localmente. Importar sai caro e demora.</div>
+        <div class="niche-meta">
+          <span class="tag tag-green">Pouca concorrência local</span>
+        </div>
+        <div class="niche-bar"><div class="niche-fill" style="width:74%"></div></div>
+        <div class="niche-range">R$ 15–350 por peça · Margem 70–180%</div>
+      </div>
+
+      <div class="niche-card" data-cat="consumo">
+        <div class="niche-icon">🐾</div>
+        <div class="niche-name">Produtos para pets</div>
+        <div class="niche-desc">Placas de identificação, comedouros adaptados, brinquedos, próteses para animais. Donos de pets investem muito em seus companheiros.</div>
+        <div class="niche-meta">
+          <span class="tag tag-green">Em expansão</span>
+          <span class="tag tag-blue">Nicho emocional</span>
+        </div>
+        <div class="niche-bar"><div class="niche-fill" style="width:72%"></div></div>
+        <div class="niche-range">R$ 10–200 por peça · Margem 60–150%</div>
+      </div>
+
+      <div class="niche-card" data-cat="consumo">
+        <div class="niche-icon">🍰</div>
+        <div class="niche-name">Moldes para confeitaria</div>
+        <div class="niche-desc">Formas de bolo, cortadores de biscoito temáticos, moldes de chocolate personalizados. Altíssima demanda em datas comemorativas (Natal, Páscoa, Dia das Mães).</div>
+        <div class="niche-meta">
+          <span class="tag tag-amber">Pico sazonal</span>
+          <span class="tag tag-green">Custo baixo</span>
+        </div>
+        <div class="niche-bar"><div class="niche-fill" style="width:68%"></div></div>
+        <div class="niche-range">R$ 15–120 por peça · Custo de produção muito baixo</div>
+      </div>
+
+      <div class="niche-card" data-cat="b2b">
+        <div class="niche-icon">🌱</div>
+        <div class="niche-name">Agro / agricultura de precisão</div>
+        <div class="niche-desc">Tampas, espaçadores, suportes de sensores, peças de plantadeiras. Segmento que paga bem por soluções rápidas e que não existe nas prateleiras.</div>
+        <div class="niche-meta">
+          <span class="tag tag-amber">Ticket alto</span>
+          <span class="tag tag-blue">Mercado inexplorado</span>
+        </div>
+        <div class="niche-bar"><div class="niche-fill" style="width:65%"></div></div>
+        <div class="niche-range">R$ 30–800 por peça · Margem 100–250%</div>
+      </div>
+
+      <div class="niche-card" data-cat="geek">
+        <div class="niche-icon">🎭</div>
+        <div class="niche-name">Cosplay e adereços</div>
+        <div class="niche-desc">Armaduras, props, capacetes, armas e acessórios para cosplay. Comunidade muito ativa no Brasil com eventos frequentes. Alto valor percebido.</div>
+        <div class="niche-meta">
+          <span class="tag tag-green">Alta margem</span>
+          <span class="tag tag-amber">Sazonalidade eventos</span>
+        </div>
+        <div class="niche-bar"><div class="niche-fill" style="width:70%"></div></div>
+        <div class="niche-range">R$ 50–1.500 por peça · Margem 80–200%</div>
+      </div>
+
+      <div class="niche-card" data-cat="b2b">
+        <div class="niche-icon">🔬</div>
+        <div class="niche-name">Prototipagem para startups</div>
+        <div class="niche-desc">Startups precisam de protótipos rápidos e baratos para validar produtos. Ser o parceiro de impressão de uma startup pode gerar contratos longos e crescentes.</div>
+        <div class="niche-meta">
+          <span class="tag tag-blue">Contrato recorrente</span>
+          <span class="tag tag-amber">Ticket variável</span>
+        </div>
+        <div class="niche-bar"><div class="niche-fill" style="width:75%"></div></div>
+        <div class="niche-range">R$ 100–5.000 por projeto · Fidelidade alta</div>
+      </div>
+
+      <div class="niche-card" data-cat="decor">
+        <div class="niche-icon">💎</div>
+        <div class="niche-name">Joias e bijuterias</div>
+        <div class="niche-desc">Com resina SLA de qualidade, é possível criar peças de joalheria com detalhes impressionantes. Mercado premium com margens muito altas.</div>
+        <div class="niche-meta">
+          <span class="tag tag-green">Margem muito alta</span>
+          <span class="tag tag-blue">Diferenciado</span>
+        </div>
+        <div class="niche-bar"><div class="niche-fill" style="width:73%"></div></div>
+        <div class="niche-range">R$ 30–500 por peça · Margem 150–400%</div>
+      </div>
+
+    </div>
+    </div>
+
+    <div class="alert alert-green" style="margin-top:2rem">
+      <span class="alert-icon">🏆</span>
+      <div><strong>Dica de ouro:</strong> O maior erro de iniciantes é tentar atender <em>todo mundo</em>. Makers que escolhem <strong>1 nicho específico</strong> e se tornam referência nele faturam 3–5× mais do que quem vende "de tudo". Escolha, domine, escale.</div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- PLATAFORMAS -->
+<section id="plataformas">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">04 — Onde vender</div>
+      <h2 class="section-title">Plataformas e canais de venda</h2>
+      <p class="section-sub">Cada plataforma tem seu público, sua taxa e sua dinâmica. Entender isso é a diferença entre escalar ou estagnar.</p>
+    </div>
+
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="showTab('plt','br',this)">Brasil</button>
+      <button class="tab-btn" onclick="showTab('plt','int',this)">Internacional</button>
+      <button class="tab-btn" onclick="showTab('plt','stl',this)">Arquivos STL</button>
+      <button class="tab-btn" onclick="showTab('plt','propria',this)">Loja própria</button>
+    </div>
+
+    <div id="plt-br" class="tab-panel active">
+      <div class="platform-grid">
+        <div class="platform-card">
+          <div class="platform-header">
+            <div>
+              <div class="platform-name">Mercado Livre</div>
+              <div style="font-size:13px;color:var(--text2);margin-top:2px">Maior e-commerce da América Latina</div>
+            </div>
+            <span class="tag tag-amber">Maior alcance</span>
+          </div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Melhor plataforma para volume e descoberta orgânica. O algoritmo favorece vendedores com boas avaliações e histórico. Ideal para produtos de ticket médio (R$30–300).</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Taxa de venda</div><div class="pstat-val">12–16%</div></div>
+            <div class="pstat"><div class="pstat-label">Dificuldade</div><div class="pstat-val">Baixa</div></div>
+            <div class="pstat"><div class="pstat-label">Público</div><div class="pstat-val">Amplo</div></div>
+            <div class="pstat"><div class="pstat-label">Repasse</div><div class="pstat-val">D+14</div></div>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">
+            <div>
+              <div class="platform-name">Elo7</div>
+              <div style="font-size:13px;color:var(--text2);margin-top:2px">"O Etsy brasileiro"</div>
+            </div>
+            <span class="tag tag-green">Artesanal</span>
+          </div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Público já está procurando produtos artesanais e personalizados — ideal para impressão 3D decorativa e lembranças. Taxa menor que Mercado Livre.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Taxa de venda</div><div class="pstat-val">~8%</div></div>
+            <div class="pstat"><div class="pstat-label">Dificuldade</div><div class="pstat-val">Baixa</div></div>
+            <div class="pstat"><div class="pstat-label">Público</div><div class="pstat-val">Artesanal</div></div>
+            <div class="pstat"><div class="pstat-label">Ticket médio</div><div class="pstat-val">R$25–150</div></div>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">
+            <div>
+              <div class="platform-name">Shopee</div>
+              <div style="font-size:13px;color:var(--text2);margin-top:2px">Crescimento explosivo no Brasil</div>
+            </div>
+            <span class="tag tag-green">Taxa baixa</span>
+          </div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Taxa menor, frete frequentemente subsidiado pela plataforma. Público mais jovem e sensível ao preço. Boa para produtos de volume e tickets menores.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Taxa de venda</div><div class="pstat-val">~6%</div></div>
+            <div class="pstat"><div class="pstat-label">Dificuldade</div><div class="pstat-val">Baixa</div></div>
+            <div class="pstat"><div class="pstat-label">Público</div><div class="pstat-val">Jovem</div></div>
+            <div class="pstat"><div class="pstat-label">Frete</div><div class="pstat-val">Subsidiado</div></div>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">
+            <div>
+              <div class="platform-name">Facebook / Instagram</div>
+              <div style="font-size:13px;color:var(--text2);margin-top:2px">Marketplace & Social Commerce</div>
+            </div>
+            <span class="tag tag-blue">Gratuito</span>
+          </div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Sem taxas de venda. Ideal para primeiros clientes e vendas locais. Instagram Shopping funciona como vitrine profissional integrada ao conteúdo.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Taxa de venda</div><div class="pstat-val">0%</div></div>
+            <div class="pstat"><div class="pstat-label">Dificuldade</div><div class="pstat-val">Média</div></div>
+            <div class="pstat"><div class="pstat-label">Alcance</div><div class="pstat-val">Alto</div></div>
+            <div class="pstat"><div class="pstat-label">Negociação</div><div class="pstat-val">Direta</div></div>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">
+            <div>
+              <div class="platform-name">WhatsApp Business</div>
+              <div style="font-size:13px;color:var(--text2);margin-top:2px">Catálogo + Conversas diretas</div>
+            </div>
+            <span class="tag tag-blue">Gratuito</span>
+          </div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Canal de vendas poderoso no Brasil. Catálogo de produtos, grupos de clientes e atendimento personalizado. Excelente para clientes recorrentes.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Taxa de venda</div><div class="pstat-val">0%</div></div>
+            <div class="pstat"><div class="pstat-label">Fidelidade</div><div class="pstat-val">Alta</div></div>
+            <div class="pstat"><div class="pstat-label">Alcance</div><div class="pstat-val">Limitado</div></div>
+            <div class="pstat"><div class="pstat-label">Conversão</div><div class="pstat-val">Muito alta</div></div>
+          </div>
+        </div>
+
+        <div class="platform-card">
+          <div class="platform-header">
+            <div>
+              <div class="platform-name">OLX / Enjoei</div>
+              <div style="font-size:13px;color:var(--text2);margin-top:2px">Produtos usados e artesanais</div>
+            </div>
+            <span class="tag tag-blue">Gratuito</span>
+          </div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Bom para primeiras vendas locais e testes de produto. Menos profissional, mas ajuda a validar demanda sem custo.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Taxa de venda</div><div class="pstat-val">0–5%</div></div>
+            <div class="pstat"><div class="pstat-label">Dificuldade</div><div class="pstat-val">Baixa</div></div>
+            <div class="pstat"><div class="pstat-label">Perfil</div><div class="pstat-val">Teste</div></div>
+            <div class="pstat"><div class="pstat-label">Alcance</div><div class="pstat-val">Regional</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="plt-int" class="tab-panel">
+      <div class="platform-grid">
+        <div class="platform-card card-blue">
+          <div class="platform-header">
+            <div><div class="platform-name">Etsy</div><div style="font-size:13px;color:var(--text2);margin-top:2px">Mercado global de artesanato</div></div>
+            <span class="tag tag-amber">Referência global</span>
+          </div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Melhor marketplace internacional para peças personalizadas e artísticas. Público valoriza exclusividade e paga em dólar. Requer descrições em inglês e fotos profissionais.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Taxa total</div><div class="pstat-val">~13%</div></div>
+            <div class="pstat"><div class="pstat-label">Moeda</div><div class="pstat-val">USD / EUR</div></div>
+            <div class="pstat"><div class="pstat-label">Ticket médio</div><div class="pstat-val">US$ 15–80</div></div>
+            <div class="pstat"><div class="pstat-label">Público</div><div class="pstat-val">Global</div></div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-header">
+            <div><div class="platform-name">eBay</div><div style="font-size:13px;color:var(--text2);margin-top:2px">Leilões e preço fixo</div></div>
+            <span class="tag tag-blue">Internacional</span>
+          </div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Bom para peças técnicas e de reposição. Público de hobby e colecionadores. Formato de leilão pode valorizar peças únicas.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Taxa total</div><div class="pstat-val">~13%</div></div>
+            <div class="pstat"><div class="pstat-label">Alcance</div><div class="pstat-val">Global</div></div>
+            <div class="pstat"><div class="pstat-label">Perfil</div><div class="pstat-val">Técnico/hobby</div></div>
+            <div class="pstat"><div class="pstat-label">Dificuldade</div><div class="pstat-val">Média</div></div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-header">
+            <div><div class="platform-name">Amazon Handmade</div><div style="font-size:13px;color:var(--text2);margin-top:2px">Artesanato na maior loja do mundo</div></div>
+            <span class="tag tag-green">Alto tráfego</span>
+          </div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Programa específico para artesãos. Enorme tráfego mas competição acirrada. Exige aprovação prévia e produtos classificados como handmade.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Taxa total</div><div class="pstat-val">~15%</div></div>
+            <div class="pstat"><div class="pstat-label">Tráfego</div><div class="pstat-val">Muito alto</div></div>
+            <div class="pstat"><div class="pstat-label">Aprovação</div><div class="pstat-val">Necessária</div></div>
+            <div class="pstat"><div class="pstat-label">Dificuldade</div><div class="pstat-val">Alta</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="plt-stl" class="tab-panel">
+      <div class="alert alert-blue" style="margin-bottom:1.5rem">
+        <span class="alert-icon">📁</span>
+        <div><strong>Vender arquivos STL</strong> é o modelo mais escalável: você cria uma vez e vende infinitas vezes, sem custo de produção adicional. É a melhor forma de gerar renda passiva com impressão 3D.</div>
+      </div>
+      <div class="platform-grid">
+        <div class="platform-card">
+          <div class="platform-header"><div><div class="platform-name">MyMiniFactory</div><div style="font-size:13px;color:var(--text2)">A maior plataforma de STL pagos</div></div><span class="tag tag-green">Melhor para criadores</span></div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Criadores ficam com 92% do valor (descontado fee de processamento). Comunidade muito ativa, especialmente em miniaturas RPG.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Repasse criador</div><div class="pstat-val">~92%</div></div>
+            <div class="pstat"><div class="pstat-label">Foco</div><div class="pstat-val">Miniaturas</div></div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-header"><div><div class="platform-name">Cults3D</div><div style="font-size:13px;color:var(--text2)">Design e modelos técnicos</div></div><span class="tag tag-blue">Popular</span></div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Ampla variedade de modelos. Boa visibilidade orgânica. Repasse de 80% para o designer.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Repasse criador</div><div class="pstat-val">~80%</div></div>
+            <div class="pstat"><div class="pstat-label">Modelos</div><div class="pstat-val">+600k</div></div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-header"><div><div class="platform-name">Printables (Prusa)</div><div style="font-size:13px;color:var(--text2)">Plataforma da Prusa Research</div></div><span class="tag tag-green">Comunidade ativa</span></div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Permite monetização via "suporte ao criador". Grande comunidade técnica. Boa para ganhar visibilidade.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Monetização</div><div class="pstat-val">Suporte/Tip</div></div>
+            <div class="pstat"><div class="pstat-label">Foco</div><div class="pstat-val">Técnico/DIY</div></div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-header"><div><div class="platform-name">Patreon</div><div style="font-size:13px;color:var(--text2)">Assinaturas mensais de modelos</div></div><span class="tag tag-amber">Renda recorrente</span></div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Modelo de assinatura: clientes pagam mensalmente por novos designs exclusivos. Exige consistência e audiência prévia.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Taxa</div><div class="pstat-val">8–12%</div></div>
+            <div class="pstat"><div class="pstat-label">Receita</div><div class="pstat-val">Previsível</div></div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-header"><div><div class="platform-name">Etsy (arquivos digitais)</div><div style="font-size:13px;color:var(--text2)">STL para venda global</div></div><span class="tag tag-blue">Alto tráfego</span></div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Muitos compradores buscam STLs para imprimir em casa. Entrega automática do arquivo após compra. Recebe em dólar.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Taxa total</div><div class="pstat-val">~13%</div></div>
+            <div class="pstat"><div class="pstat-label">Potencial</div><div class="pstat-val">Alto</div></div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-header"><div><div class="platform-name">Mercado Livre (STL)</div><div style="font-size:13px;color:var(--text2)">Arquivos digitais no Brasil</div></div><span class="tag tag-blue">Mercado BR</span></div>
+          <p style="font-size:13.5px;color:var(--text2);line-height:1.6">Permite vender arquivos digitais. Público brasileiro procura STLs em reais. Mais acessível para iniciantes locais.</p>
+          <div class="platform-stats">
+            <div class="pstat"><div class="pstat-label">Taxa</div><div class="pstat-val">12–16%</div></div>
+            <div class="pstat"><div class="pstat-label">Alcance</div><div class="pstat-val">Brasil</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="plt-propria" class="tab-panel">
+      <div class="alert alert-blue" style="margin-bottom:1.5rem">
+        <span class="alert-icon">🏪</span>
+        <div><strong>Loja própria</strong> = sem taxa de venda, controle total da marca e experiência do cliente. Requer investimento em tráfego pago ou orgânico. Ideal após validar vendas em marketplaces.</div>
+      </div>
+      <div class="grid3">
+        <div class="card"><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.5rem">Shopify</div><p style="font-size:13px;color:var(--text2);line-height:1.55">A melhor plataforma para escalar. Integração com redes sociais, analytics avançado, apps para personalização. A partir de ~US$29/mês.</p></div>
+        <div class="card"><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.5rem">Nuvemshop</div><p style="font-size:13px;color:var(--text2);line-height:1.55">A Shopify brasileira. Suporte em português, integração com meios de pagamento locais (Pix, boleto). Ideal para o mercado BR.</p></div>
+        <div class="card"><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.5rem">WooCommerce</div><p style="font-size:13px;color:var(--text2);line-height:1.55">Plugin WordPress. Mais trabalhoso de configurar, mas sem mensalidade da plataforma. Bom para quem já tem site.</p></div>
+        <div class="card"><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.5rem">Hotmart / Kiwify</div><p style="font-size:13px;color:var(--text2);line-height:1.55">Ideal para vender arquivos STL e cursos sobre impressão 3D. Checkout otimizado, entrega automática de arquivos digitais.</p></div>
+        <div class="card"><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.5rem">Google Meu Negócio</div><p style="font-size:13px;color:var(--text2);line-height:1.55">Gratuito e essencial para quem vende localmente. Apareça nas buscas de "impressão 3D perto de mim" com avaliações e fotos.</p></div>
+        <div class="card"><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.5rem">Site próprio (portfólio)</div><p style="font-size:13px;color:var(--text2);line-height:1.55">Um portfólio online profissional com galeria de trabalhos, formulário de orçamento e contato B2B pode gerar leads de alto valor.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- MARKETING -->
+<section id="marketing">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">05 — Crescimento</div>
+      <h2 class="section-title">Estratégias de marketing e venda</h2>
+      <p class="section-sub">Ter o melhor produto não é suficiente. Você precisa ser encontrado, ser confiável e ter um fluxo constante de clientes.</p>
+    </div>
+
+    <div class="grid2" style="margin-bottom:2rem">
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1rem">Redes sociais por prioridade</h3>
+        <div class="prog-row">
+          <div class="prog-label"><span class="prog-label-name">📱 TikTok (orgânico viral)</span><span class="prog-label-val">Alcance 10×</span></div>
+          <div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-label"><span class="prog-label-name">📸 Instagram (visual + vendas)</span><span class="prog-label-val">Conversão alta</span></div>
+          <div class="prog-bar"><div class="prog-fill" style="width:88%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-label"><span class="prog-label-name">📌 Pinterest (SEO visual)</span><span class="prog-label-val">Tráfego duradouro</span></div>
+          <div class="prog-bar"><div class="prog-fill" style="width:75%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-label"><span class="prog-label-name">▶️ YouTube (autoridade + renda)</span><span class="prog-label-val">Longo prazo</span></div>
+          <div class="prog-bar"><div class="prog-fill" style="width:70%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-label"><span class="prog-label-name">💼 LinkedIn (B2B / industrial)</span><span class="prog-label-val">Ticket alto</span></div>
+          <div class="prog-bar"><div class="prog-fill" style="width:60%"></div></div>
+        </div>
+        <div class="prog-row">
+          <div class="prog-label"><span class="prog-label-name">👥 Facebook / Grupos</span><span class="prog-label-val">Comunidade</span></div>
+          <div class="prog-bar"><div class="prog-fill" style="width:55%"></div></div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1rem">Tipos de conteúdo que vendem</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num" style="font-size:16px">🎬</div>
+            <div class="step-body">
+              <div class="step-title">Timelapse da impressão</div>
+              <div class="step-text">Vídeos acelerados de peças sendo impressas viralizam naturalmente. Mostre antes e depois, destaque detalhes surpreendentes.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num" style="font-size:16px">📦</div>
+            <div class="step-body">
+              <div class="step-title">Unboxing e entrega</div>
+              <div class="step-text">Peça para clientes filmarem a chegada do produto. Prova social autêntica — muito mais eficaz do que qualquer anúncio.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num" style="font-size:16px">🔧</div>
+            <div class="step-body">
+              <div class="step-title">Bastidores e processo</div>
+              <div class="step-text">Mostre a falha que aconteceu e como você resolveu. Transparência gera confiança e humaniza sua marca.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num" style="font-size:16px">📊</div>
+            <div class="step-body">
+              <div class="step-title">Tutoriais e conteúdo educativo</div>
+              <div class="step-text">Ensine algo sobre impressão 3D. Quem aprende com você confia em você — e compra de você.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1.25rem;font-size:1.3rem">Táticas de venda que funcionam</h3>
+    <div class="grid3">
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:.75rem">📸</div>
+        <div class="step-title">Fotografia profissional</div>
+        <div style="font-size:13px;color:var(--text2);margin-top:4px;line-height:1.55">Fundo branco neutro, boa iluminação (caixa de luz ou janela) e múltiplos ângulos. Fotos ruins = zero vendas mesmo com produto excelente. Invista 30 min por produto.</div>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:.75rem">🔍</div>
+        <div class="step-title">SEO nas descrições</div>
+        <div style="font-size:13px;color:var(--text2);margin-top:4px;line-height:1.55">Use as palavras que o cliente pesquisa: "miniatura dnd impresso 3d", "suporte gamer personalizado". Inclua materiais, dimensões, prazo de produção e variações disponíveis.</div>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:.75rem">⭐</div>
+        <div class="step-title">Avaliações são tudo</div>
+        <div style="font-size:13px;color:var(--text2);margin-top:4px;line-height:1.55">Peça avaliação a CADA cliente. Um produto com 50 avaliações 5★ vende 10× mais que um sem avaliações. Ofereça desconto na próxima compra em troca de avaliação com foto.</div>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:.75rem">🎁</div>
+        <div class="step-title">Kits e bundles</div>
+        <div style="font-size:13px;color:var(--text2);margin-top:4px;line-height:1.55">Vender kits aumenta o ticket médio sem aumentar proporcionalmente o esforço. "Kit 5 miniaturas de RPG" vende melhor que 5 anúncios individuais.</div>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:.75rem">🔄</div>
+        <div class="step-title">Clientes recorrentes</div>
+        <div style="font-size:13px;color:var(--text2);margin-top:4px;line-height:1.55">Fidelizar é mais barato que adquirir. Crie lista no WhatsApp, mande novidades, ofereça desconto especial para quem comprou antes. Um cliente satisfeito vale 7× mais.</div>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:.75rem">⚡</div>
+        <div class="step-title">Taxa de urgência</div>
+        <div style="font-size:13px;color:var(--text2);margin-top:4px;line-height:1.55">Para pedidos urgentes (em 24–48h) cobre 20–40% a mais. Muitos clientes aceitam pagar por agilidade. Organize sua agenda para ter essa capacidade disponível.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- LEGAL -->
+<section id="legal">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">06 — Aspectos legais</div>
+      <h2 class="section-title">MEI, impostos e aspectos jurídicos</h2>
+      <p class="section-sub">Vender sem regularização é arriscado. Entender o básico legal protege você e profissionaliza o negócio.</p>
+    </div>
+
+    <div class="grid2" style="margin-bottom:2rem">
+      <div>
+        <div class="card card-blue" style="margin-bottom:1.25rem">
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:.75rem;color:var(--blue-light)">MEI — Microempreendedor Individual</div>
+          <p style="font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:1rem">A forma mais simples de formalizar. Permite faturar até <strong class="text-blue">R$81.000/ano (R$6.750/mês)</strong> com tributação simplificada.</p>
+          <div class="data-table" style="font-size:13px">
+            <table class="data-table">
+              <tr><td style="color:var(--text2)">DAS mensal (comércio)</td><td class="mono text-blue">~R$70,60</td></tr>
+              <tr><td style="color:var(--text2)">CNAE para impressão 3D</td><td class="mono text-blue">3299-0/99</td></tr>
+              <tr><td style="color:var(--text2)">Limite de faturamento</td><td class="mono text-blue">R$81.000/ano</td></tr>
+              <tr><td style="color:var(--text2)">Emissão de nota fiscal</td><td class="mono text-green">Permitida</td></tr>
+              <tr><td style="color:var(--text2)">Funcionários</td><td class="mono text-amber">Até 1</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="alert alert-amber">
+          <span class="alert-icon">⚠️</span>
+          <div><strong>Atenção:</strong> O MEI não pode ter sócios e deve ter atividade principal enquadrada. Consulte um contador para o CNAE ideal para sua atividade (impressão 3D sob encomenda, venda de produtos, serviços de modelagem).</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:1.25rem">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:1rem">Propriedade intelectual — o que é legal vender</div>
+          <div class="alert alert-green" style="margin-bottom:.75rem">
+            <span class="alert-icon">✅</span>
+            <div style="font-size:13px">Modelos <strong>originais</strong> criados por você. Modelos com licença comercial (ex: Creative Commons BY). Modelos comprados com licença para uso comercial.</div>
+          </div>
+          <div class="alert alert-red">
+            <span class="alert-icon">❌</span>
+            <div style="font-size:13px">Personagens protegidos por copyright (Marvel, Disney, Nintendo, Star Wars...). Modelos de terceiros sem licença comercial. Logotipos e marcas registradas.</div>
+          </div>
+          <p style="font-size:13px;color:var(--text2);line-height:1.6">O Mercado Livre e Etsy <strong>removem anúncios</strong> que violam copyright. A DMCA pode resultar em banimento permanente da conta.</p>
+        </div>
+
+        <div class="card">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.75rem">Comparativo de regimes tributários</div>
+          <table class="data-table" style="font-size:13px">
+            <thead><tr><th>Regime</th><th>Limite anual</th><th>Alíquota mín.</th></tr></thead>
+            <tbody>
+              <tr><td class="fw700">MEI</td><td class="mono">R$81.000</td><td class="mono text-green">~1%</td></tr>
+              <tr><td class="fw700">Simples Nacional</td><td class="mono">R$4,8M</td><td class="mono text-amber">4–15%</td></tr>
+              <tr><td class="fw700">Lucro Presumido</td><td class="mono">R$78M</td><td class="mono text-red">~15%+</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ROI -->
+<section id="roi">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">07 — Retorno sobre investimento</div>
+      <h2 class="section-title">Calculadora de ROI</h2>
+      <p class="section-sub">Descubra em quanto tempo sua impressora se paga e qual o potencial de faturamento mensal.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="result-header">Parâmetros do negócio</div>
+        <div class="form-group">
+          <div class="form-label">Investimento inicial total (R$) <span id="rl-inv">R$3.500</span></div>
+          <input type="range" id="r-invest" min="500" max="50000" value="3500" step="500" oninput="calcROI()">
+        </div>
+        <div class="form-group">
+          <div class="form-label">Peças vendidas por mês <span id="rl-qty">30</span></div>
+          <input type="range" id="r-qty" min="1" max="500" value="30" step="1" oninput="calcROI()">
+        </div>
+        <div class="form-group">
+          <div class="form-label">Preço médio de venda (R$) <span id="rl-price">R$80</span></div>
+          <input type="range" id="r-price" min="10" max="2000" value="80" step="5" oninput="calcROI()">
+        </div>
+        <div class="form-group">
+          <div class="form-label">Custo médio por peça (R$) <span id="rl-cost">R$30</span></div>
+          <input type="range" id="r-cost" min="5" max="500" value="30" step="5" oninput="calcROI()">
+        </div>
+        <div class="form-group">
+          <div class="form-label">Gastos mensais fixos (R$) <span id="rl-fix">R$200</span></div>
+          <input type="range" id="r-fixcost" min="0" max="5000" value="200" step="50" oninput="calcROI()">
+        </div>
+      </div>
+
+      <div>
+        <div class="roi-output">
+          <div class="roi-card"><div class="roi-label">Faturamento mensal</div><div class="roi-val" id="roi-fat">R$ 0</div></div>
+          <div class="roi-card"><div class="roi-label">Lucro líquido/mês</div><div class="roi-val" id="roi-lucro">R$ 0</div></div>
+          <div class="roi-card"><div class="roi-label">Margem líquida</div><div class="roi-val" id="roi-mg">0%</div></div>
+          <div class="roi-card"><div class="roi-label">Payback (meses)</div><div class="roi-val" id="roi-pb">0</div></div>
+          <div class="roi-card"><div class="roi-label">Lucro anual</div><div class="roi-val" id="roi-anual">R$ 0</div></div>
+          <div class="roi-card"><div class="roi-label">ROI no 1º ano</div><div class="roi-val" id="roi-roi">0%</div></div>
+        </div>
+
+        <div class="card" style="margin-top:1.25rem">
+          <div class="chart-wrap" style="height:200px">
+            <canvas id="roiChart" role="img" aria-label="Gráfico de linha mostrando acúmulo de lucro ao longo de 12 meses">Acúmulo de lucro ao longo de 12 meses.</canvas>
+          </div>
+        </div>
+
+        <div class="alert alert-blue" style="margin-top:1rem">
+          <span class="alert-icon">📈</span>
+          <div id="roi-tip" style="font-size:13.5px">Ajuste os parâmetros para ver a projeção do seu negócio.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">08 — Do zero ao negócio</div>
+      <h2 class="section-title">Roteiro para começar do zero</h2>
+      <p class="section-sub">Um plano prático, semana a semana, para quem quer transformar uma impressora 3D em renda real.</p>
+    </div>
+
+    <div class="roadmap">
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-phase">Semana 1–2</div>
+        <div class="roadmap-title">Fundação e validação</div>
+        <div class="roadmap-text">Escolha seu nicho com base em pesquisa de mercado (Mercado Livre, Elo7, Google Trends). Defina 3–5 produtos iniciais. Calcule seus custos reais com a fórmula de precificação. Valide o interesse postando fotos em grupos do Facebook antes de investir em estoque.</div>
+        <div class="roadmap-items">
+          <span class="r-tag">Pesquisa de nicho</span>
+          <span class="r-tag">Cálculo de custos</span>
+          <span class="r-tag">Produtos MVP</span>
+          <span class="r-tag">Validação</span>
+        </div>
+      </div>
+
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-phase">Semana 3–4</div>
+        <div class="roadmap-title">Primeiras vendas</div>
+        <div class="roadmap-text">Crie suas primeiras peças com qualidade máxima. Faça fotos profissionais. Publique no Mercado Livre, Elo7 e redes sociais. Ofereça as primeiras 5 peças com pequeno desconto em troca de avaliações e fotos dos clientes.</div>
+        <div class="roadmap-items">
+          <span class="r-tag">Primeiras peças</span>
+          <span class="r-tag">Fotos profissionais</span>
+          <span class="r-tag">Publicar anúncios</span>
+          <span class="r-tag">Coletar avaliações</span>
+        </div>
+      </div>
+
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-phase">Mês 2–3</div>
+        <div class="roadmap-title">Crescimento e ajustes</div>
+        <div class="roadmap-text">Analise quais produtos vendem mais e foque neles. Otimize os anúncios que não convertem. Comece a construir presença no Instagram ou TikTok. Abra o MEI para emitir notas fiscais e ganhar credibilidade.</div>
+        <div class="roadmap-items">
+          <span class="r-tag">Análise de dados</span>
+          <span class="r-tag">Foco nos top produtos</span>
+          <span class="r-tag">Presença social</span>
+          <span class="r-tag">Abrir MEI</span>
+        </div>
+      </div>
+
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-phase">Mês 4–6</div>
+        <div class="roadmap-title">Escala e especialização</div>
+        <div class="roadmap-text">Com histórico de avaliações positivas, invista em tráfego pago (Mercado Livre Ads, Meta Ads). Crie pacotes e kits. Busque clientes B2B locais (empresas, arquitetos, makers). Considere uma segunda impressora se a demanda superar a capacidade.</div>
+        <div class="roadmap-items">
+          <span class="r-tag">Tráfego pago</span>
+          <span class="r-tag">Kits e bundles</span>
+          <span class="r-tag">Prospecção B2B</span>
+          <span class="r-tag">Escalar capacidade</span>
+        </div>
+      </div>
+
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-phase">6 meses+</div>
+        <div class="roadmap-title">Profissionalização e farm</div>
+        <div class="roadmap-text">Loja própria (Nuvemshop ou Shopify). Farm de impressoras para aumentar volume. Contratos mensais com empresas. Venda de STLs como renda passiva. Criação de conteúdo para múltiplas fontes de receita (YouTube, Patreon, cursos).</div>
+        <div class="roadmap-items">
+          <span class="r-tag">Loja própria</span>
+          <span class="r-tag">Farm de impressoras</span>
+          <span class="r-tag">Contratos B2B</span>
+          <span class="r-tag">STL + conteúdo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-green" style="margin-top:2rem">
+      <span class="alert-icon">💰</span>
+      <div><strong>Faturamento possível com 1 impressora:</strong> Iniciante R$500–1.500/mês &nbsp;|&nbsp; Intermediário R$2.000–5.000/mês &nbsp;|&nbsp; Avançado com farm ou B2B R$8.000–30.000+/mês. Makers brasileiros com nicho definido relatam payback da impressora em 2–4 meses.</div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- ERROS -->
+<section id="erros">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">09 — Aprenda com os erros alheios</div>
+      <h2 class="section-title">Os 10 erros que destroem negócios de impressão 3D</h2>
+      <p class="section-sub">Compilado de relatos de makers brasileiros, fóruns especializados e comunidades de impressão 3D.</p>
+    </div>
+
+    <div class="error-grid">
+      <div class="error-card">
+        <div class="error-num">erro 01</div>
+        <div class="error-title">Cobrar só pelo filamento</div>
+        <div class="error-text">O material representa apenas 5–15% do custo real. Ignorar energia, tempo, depreciação e margem = trabalhar de graça.</div>
+        <div class="error-fix">✅ Use a calculadora completa para cada peça, sem exceção.</div>
+      </div>
+      <div class="error-card">
+        <div class="error-num">erro 02</div>
+        <div class="error-title">Não incluir a taxa do marketplace</div>
+        <div class="error-text">Anunciar no Mercado Livre com margem de 10% e ser taxado em 16% = prejuízo em cada venda. Muitos começam assim.</div>
+        <div class="error-fix">✅ Inclua taxa de marketplace + imposto no preço ANTES de publicar.</div>
+      </div>
+      <div class="error-card">
+        <div class="error-num">erro 03</div>
+        <div class="error-title">Não planejar o prazo de entrega</div>
+        <div class="error-text">Prometer entrega em 3 dias para uma peça de 18h de impressão + acabamento. Cancelamentos e avaliações negativas destroem a conta.</div>
+        <div class="error-fix">✅ Seja conservador. Melhor surpreender do que desapontar.</div>
+      </div>
+      <div class="error-card">
+        <div class="error-num">erro 04</div>
+        <div class="error-title">Vender sem nicho definido</div>
+        <div class="error-text">"Imprimo qualquer coisa" não é posicionamento. Sem nicho, você compete com todo mundo e não é referência para ninguém.</div>
+        <div class="error-fix">✅ Escolha 1 nicho, domine, depois expanda.</div>
+      </div>
+      <div class="error-card">
+        <div class="error-num">erro 05</div>
+        <div class="error-title">Ignorar a taxa de falha</div>
+        <div class="error-text">Toda impressora falha. Não ter provisão para retrabalhos significa que toda falha come o lucro do mês.</div>
+        <div class="error-fix">✅ Reserve 5–10% do custo de cada peça para falhas.</div>
+      </div>
+      <div class="error-card">
+        <div class="error-num">erro 06</div>
+        <div class="error-title">Foto ruim no anúncio</div>
+        <div class="error-text">Fotos escuras, tortas ou com fundo bagunçado = zero conversão. O cliente não pode tocar o produto — a foto é tudo.</div>
+        <div class="error-fix">✅ Invista 30 min por produto em fotos com boa iluminação.</div>
+      </div>
+      <div class="error-card">
+        <div class="error-num">erro 07</div>
+        <div class="error-title">Vender designs com copyright</div>
+        <div class="error-text">Imprimir e vender personagens da Disney, Marvel, Nintendo etc. é ilegal e resulta em banimento permanente de plataformas.</div>
+        <div class="error-fix">✅ Use apenas modelos com licença comercial ou seus próprios.</div>
+      </div>
+      <div class="error-card">
+        <div class="error-num">erro 08</div>
+        <div class="error-title">Não pedir avaliação dos clientes</div>
+        <div class="error-text">Avaliações são o principal fator de conversão em marketplaces. Sem elas, você perde para concorrentes com menos qualidade mas mais reputação.</div>
+        <div class="error-fix">✅ Mande mensagem pós-entrega pedindo avaliação com foto.</div>
+      </div>
+      <div class="error-card">
+        <div class="error-num">erro 09</div>
+        <div class="error-title">Escalar antes de validar</div>
+        <div class="error-text">Comprar 5 impressoras antes de validar que as peças vendem. Muitos makers têm farms e não têm clientes.</div>
+        <div class="error-fix">✅ Valide com 1 impressora e clientes reais antes de escalar.</div>
+      </div>
+      <div class="error-card">
+        <div class="error-num">erro 10</div>
+        <div class="error-title">Operar sem formalização</div>
+        <div class="error-text">Vender sem MEI impede emissão de nota fiscal, limita plataformas B2B e cria risco com a Receita Federal acima de certos volumes.</div>
+        <div class="error-fix">✅ Abra o MEI (gratuito e simples) assim que começar a vender.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">10 — Dúvidas frequentes</div>
+      <h2 class="section-title">Perguntas e respostas</h2>
+      <p class="section-sub">As perguntas mais comuns de quem está começando a vender impressões 3D no Brasil.</p>
+    </div>
+
+    <div style="max-width:800px">
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          Quanto custa o tempo que fico "só olhando" a impressora?
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Durante a impressão, você <em>não precisa</em> ficar olhando — a impressora trabalha sozinha. O que você deve cobrar é o tempo <strong>ativo</strong>: preparação do arquivo, fatiamento, colocação na mesa, remoção, limpeza de suporte e acabamento. Esse tempo geralmente é de 15–60 minutos por peça. Cobrar pelo tempo total de impressão como "hora de trabalho" é um erro — você pode fazer outra coisa enquanto a máquina imprime.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          Qual margem de lucro devo usar para começar?
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Depende do mercado e produto:</p>
+          <ul>
+            <li><strong>Produtos de commodity</strong> (peças funcionais genéricas): 30–50%</li>
+            <li><strong>Produtos de nicho</strong> (miniaturas, decoração específica): 60–100%</li>
+            <li><strong>Personalizados e artísticos</strong>: 100–200%+</li>
+            <li><strong>Serviços B2B urgentes</strong>: 150–300%</li>
+          </ul>
+          <p style="margin-top:.75rem">A margem de lucro deve cobrir os impostos, taxas de marketplace, frete e ainda deixar dinheiro real no bolso. Nunca aplique margem sobre custo de material apenas — aplique sobre o <strong>custo total</strong>.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          Preciso de CNPJ para vender online?
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Para pequenos volumes (até ~R$1.000/mês), muitos começam como pessoa física sem problemas. Porém, ao escalar:</p>
+          <ul>
+            <li>O Mercado Livre exige CNPJ para conta profissional e maiores limites</li>
+            <li>Empresas B2B exigem nota fiscal para pagamento</li>
+            <li>Receita Federal pode questionar receitas não declaradas</li>
+          </ul>
+          <p style="margin-top:.75rem">O <strong>MEI</strong> é gratuito, simples e resolve tudo. Formaliza em minutos no site gov.br/mei. Custo: ~R$70/mês de DAS. Vale muito a pena.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          Como calcular o preço do frete?
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>O frete deve ser <strong>sempre pago pelo cliente</strong> ou embutido no preço do produto. Para calcular:</p>
+          <ul>
+            <li>Pese a peça já embalada (caixa + proteção)</li>
+            <li>Use a calculadora dos Correios (PAC, SEDEX) pelo site oficial</li>
+            <li>Mercado Livre Envios calcula automaticamente pelo CEP</li>
+            <li>Para peças grandes e pesadas, use transportadoras (Jadlog, Total Express)</li>
+            <li>Adicione sempre 20–30% para margem de segurança e embalagem</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          Vale a pena vender arquivos STL em vez de peças físicas?
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Sim, e é o modelo mais escalável. Vantagens dos STLs:</p>
+          <ul>
+            <li>Custo de "produção" = zero após criar o arquivo</li>
+            <li>Venda infinita do mesmo arquivo sem trabalho adicional</li>
+            <li>Sem frete, sem embalagem, sem estoque</li>
+            <li>Alcance global (MyMiniFactory, Cults3D, Etsy)</li>
+          </ul>
+          <p style="margin-top:.75rem">A desvantagem é que requer habilidade em modelagem 3D (ou terceirização) e a concorrência com arquivos gratuitos. Para quem não sabe modelar, imprimir peças físicas é mais acessível para começar.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          Qual impressora usar para vender?
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Depende do nicho:</p>
+          <ul>
+            <li><strong>FDM (filamento)</strong>: Bambu Lab A1/X1, Prusa MK4, Ender 3 V3. Ideal para decoração, peças funcionais, kits. Boa relação custo/benefício.</li>
+            <li><strong>Resina SLA/MSLA</strong>: Elegoo Saturn, Anycubic Photon. Ideal para miniaturas, joias, odonto. Detalhes finos mas mais trabalhosa.</li>
+            <li><strong>Velocidade industrial</strong>: Bambu Lab X1C Carbon, Creality K1 Max. Para quem quer produção em volume com qualidade.</li>
+          </ul>
+          <p style="margin-top:.75rem">Para começar: <strong>Bambu Lab A1 Mini</strong> (~R$1.500) ou <strong>Ender 3 V3 KE</strong> (~R$1.000) são excelentes para quem quer entrar rápido no mercado.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          Como lidar com clientes difíceis ou pedidos impossíveis?
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Situações comuns e como lidar:</p>
+          <ul>
+            <li><strong>"Achei mais barato em outro lugar"</strong>: Explique seus diferenciais (prazo, qualidade, atendimento). Se o cliente quer só preço baixo, provavelmente não é seu público.</li>
+            <li><strong>Arquivo STL com problemas</strong>: Cobre taxa de preparação do arquivo separada. Deixe claro no anúncio que arquivos fornecidos devem estar em boa qualidade.</li>
+            <li><strong>Prazo impossível</strong>: Seja honesto. Melhor recusar do que entregar mal e perder a avaliação.</li>
+            <li><strong>Reclamação de qualidade</strong>: Refaça sem cobrar se for culpa da impressão. Se for expectativa irreal do cliente, mostre fotos/vídeos do processo.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          Como precificar peças muito pequenas (chaveiros, brincos)?
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Peças pequenas têm custo de material baixo, mas o <strong>trabalho de configuração</strong> é o mesmo. Aplique um valor mínimo por peça independente do tamanho:</p>
+          <ul>
+            <li>Mínimo sugerido: <strong>R$8–15 por peça</strong> mesmo que o filamento custe R$0,50</li>
+            <li>Venda em kits: "kit 10 chaveiros" é mais atrativo e rentável</li>
+            <li>Adicione taxa de personalização se tiver nome/logo</li>
+            <li>Imprima várias peças na mesma placa para otimizar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- GLOSSÁRIO -->
+<section id="glossario">
+  <div class="wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">11 — Referência rápida</div>
+      <h2 class="section-title">Glossário de termos essenciais</h2>
+    </div>
+
+    <div class="glossary-grid">
+      <div class="glossary-item"><div class="glossary-term">FDM / FFF</div><div class="glossary-def">Fused Deposition Modeling. Tecnologia mais comum: derrete filamento e deposita camada a camada.</div></div>
+      <div class="glossary-item"><div class="glossary-term">SLA / MSLA</div><div class="glossary-def">Stereolithography. Cura resina com UV, camada a camada. Alta precisão, ideal para miniaturas.</div></div>
+      <div class="glossary-item"><div class="glossary-term">STL</div><div class="glossary-def">Formato de arquivo 3D padrão. Define a geometria da superfície do objeto a ser impresso.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Fatiador (Slicer)</div><div class="glossary-def">Software que converte o STL em instruções para a impressora (G-code). Ex: Bambu Studio, Cura, PrusaSlicer.</div></div>
+      <div class="glossary-item"><div class="glossary-term">PLA</div><div class="glossary-def">Polylactic Acid. Filamento mais comum, fácil de usar, biodegradável. Ideal para iniciantes e decoração.</div></div>
+      <div class="glossary-item"><div class="glossary-term">PETG</div><div class="glossary-def">Filamento flexível e resistente. Mais durável que PLA, bom para peças funcionais e externas.</div></div>
+      <div class="glossary-item"><div class="glossary-term">ABS / ASA</div><div class="glossary-def">Resistente ao calor e UV. Difícil de imprimir (warping). ASA é versão melhorada do ABS.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Infill (preenchimento)</div><div class="glossary-def">Porcentagem de material interno. 15–20% para peças estéticas, 50–100% para estruturais.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Suporte</div><div class="glossary-def">Estrutura temporária para imprimir partes suspensas. Removida após impressão. Gera material extra.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Layer height (camada)</div><div class="glossary-def">Espessura de cada camada. 0,2mm padrão. Camadas finas = mais detalhe, mais tempo. Grossas = mais rápido.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Warping</div><div class="glossary-def">Deformação da peça durante a impressão por diferença de temperatura. Comum com ABS/ASA.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Farm de impressoras</div><div class="glossary-def">Conjunto de várias impressoras operando simultaneamente para aumentar volume de produção.</div></div>
+      <div class="glossary-item"><div class="glossary-term">MEI</div><div class="glossary-def">Microempreendedor Individual. Regime tributário simplificado para quem fatura até R$81k/ano.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Payback</div><div class="glossary-def">Tempo necessário para recuperar o investimento inicial com os lucros gerados pelo negócio.</div></div>
+      <div class="glossary-item"><div class="glossary-term">G-code</div><div class="glossary-def">Linguagem de instruções que diz à impressora exatamente como se mover, qual temperatura usar etc.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Pós-processamento</div><div class="glossary-def">Etapas após impressão: remoção de suporte, lixamento, pintura, cura UV (resina), montagem.</div></div>
+      <div class="glossary-item"><div class="glossary-term">CAD</div><div class="glossary-def">Computer-Aided Design. Software para criar modelos 3D. Ex: Fusion 360, Tinkercad, Blender, SolidWorks.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Depreciação</div><div class="glossary-def">Perda gradual de valor do equipamento com o uso. Deve ser incluída no custo de cada peça produzida.</div></div>
+    </div>
+
+    <div class="sources-bar" style="margin-top:2rem">
+      <strong>Fontes pesquisadas:</strong>
+      <span class="src">Filamentos3DBrasil</span>
+      <span class="src">National3D</span>
+      <span class="src">Galpão das Máquinas</span>
+      <span class="src">Shopify BR</span>
+      <span class="src">Sebrae</span>
+      <span class="src">Acelera3D</span>
+      <span class="src">3D Prime</span>
+      <span class="src">Precifi3D</span>
+      <span class="src">Bancada3D</span>
+      <span class="src">Outlet 3D</span>
+      <span class="src">3D Fila</span>
+      <span class="src">Clube3DBrasil</span>
+      <span class="src">Sethi 3D</span>
+      <span class="src">Fácil 3D</span>
+      <span class="src">3D Lab</span>
+      <span class="src">Akihana Blog</span>
+      <span class="src">Kalatec Blog</span>
+      <span class="src">AMZ Advisers</span>
+      <span class="src">Contra e Verso</span>
+      <span class="src">Mint for People</span>
+      <span class="src">Scribd / Planilhas</span>
+      <span class="src">OmniCalculator</span>
+      <span class="src">RepRapBR Fórum</span>
+      <span class="src">Accio.com</span>
+      <span class="src">MarketsandMarkets</span>
+      <span class="src">3D Hubs Report</span>
+      <span class="src">Mercado Livre</span>
+      <span class="src">Etsy Research</span>
+      <span class="src">Patreon Creator</span>
+      <span class="src">MyMiniFactory</span>
+      <span class="src">Cults3D</span>
+      <span class="src">Printables</span>
+      <span class="src">Shapeways</span>
+      <span class="src">IBGE</span>
+      <span class="src">Receita Federal</span>
+      <span class="src">gov.br/mei</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>3DPrintPro — Guia Completo de Precificação e Vendas</strong></p>
+  <p style="margin-top:.5rem">Dados coletados de +40 fontes brasileiras e internacionais · Atualizado em 2025 · Uso educacional</p>
+  <p style="margin-top:.5rem">Os valores e taxas apresentados são referências de mercado e podem variar. Sempre consulte um contador para decisões fiscais.</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+
+<script>
+// ─── COUNTER ANIMATION ───
+function animateCounter(el, target, suffix='', duration=1500){
+  const start = performance.now();
+  const update = (now) => {
+    const p = Math.min((now - start) / duration, 1);
+    const v = Math.floor(p * p * target);
+    el.textContent = v + suffix;
+    if(p < 1) requestAnimationFrame(update);
+    else el.textContent = target + suffix;
+  };
+  requestAnimationFrame(update);
+}
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    animateCounter(document.getElementById('s1'), 11);
+    animateCounter(document.getElementById('s2'), 12);
+    animateCounter(document.getElementById('s3'), 16);
+    animateCounter(document.getElementById('s4'), 40, '+');
+    animateCounter(document.getElementById('s5'), 41.4);
+  }, 300);
+});
+
+// ─── BACK TO TOP ───
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('backTop');
+  btn.classList.toggle('show', window.scrollY > 400);
+});
+
+// ─── ACCORDION ───
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.accordion-btn').forEach(b => {
+    b.classList.remove('open');
+    b.nextElementSibling.classList.remove('open');
+  });
+  if(!isOpen){ btn.classList.add('open'); body.classList.add('open'); }
+}
+
+// ─── NICHES FILTER ───
+function switchTab(containerId, cat, btn) {
+  document.querySelectorAll('.niche-card').forEach(c => {
+    if(cat === 'all' || c.dataset.cat === cat) c.style.display = '';
+    else c.style.display = 'none';
+  });
+  btn.closest('.tab-nav').querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ─── PLATFORM TABS ───
+function showTab(group, id, btn) {
+  document.querySelectorAll(`[id^="${group}-"]`).forEach(el => el.classList.remove('active'));
+  document.getElementById(group+'-'+id).classList.add('active');
+  btn.closest('.tab-nav').querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ─── CALCULATOR ───
+let costChart;
+function fmt(v){ return 'R$ ' + v.toFixed(2).replace('.',','); }
+function fmtN(v){ return v.toLocaleString('pt-BR'); }
+
+function updateCalc(){
+  const g = parseFloat(document.getElementById('c-grams').value)||0;
+  const sp = parseFloat(document.getElementById('c-spool').value)||0;
+  const h = parseFloat(document.getElementById('c-hours').value)||0;
+  const w = parseFloat(document.getElementById('c-watts').value)||0;
+  const kwh = parseFloat(document.getElementById('c-kwh').value)||0;
+  const lb = parseFloat(document.getElementById('c-labor').value)||0;
+  const lbh = parseFloat(document.getElementById('c-laborh').value)||0;
+  const pc = parseFloat(document.getElementById('c-printer').value)||0;
+  const life = parseFloat(document.getElementById('c-life').value)||5000;
+  const fixCost = parseFloat(document.getElementById('c-fixed').value)||0;
+  const mkt = parseFloat(document.getElementById('c-mkt').value)||0;
+  const pkg = parseFloat(document.getElementById('c-pkg').value)||0;
+  const fail = parseFloat(document.getElementById('c-fail').value)||0;
+  const margin = parseFloat(document.getElementById('c-margin').value)||0;
+
+  document.getElementById('lbl-g').textContent = Math.round(g)+'g';
+  document.getElementById('lbl-sp').textContent = 'R$'+Math.round(sp);
+  document.getElementById('lbl-h').textContent = h+'h';
+  document.getElementById('lbl-w').textContent = Math.round(w)+'W';
+  document.getElementById('lbl-kwh').textContent = 'R$'+kwh.toFixed(2).replace('.',',');
+  document.getElementById('lbl-lb').textContent = 'R$'+Math.round(lb)+'/h';
+  document.getElementById('lbl-lh').textContent = lbh+'h';
+  document.getElementById('lbl-pc').textContent = 'R$'+fmtN(Math.round(pc));
+  document.getElementById('lbl-ul').textContent = fmtN(Math.round(life))+'h';
+  document.getElementById('lbl-fix').textContent = 'R$'+fixCost.toFixed(1);
+  document.getElementById('lbl-mkt').textContent = mkt.toFixed(1)+'%';
+  document.getElementById('lbl-pkg').textContent = 'R$'+pkg.toFixed(1);
+  document.getElementById('lbl-mg').textContent = Math.round(margin)+'%';
+
+  const mat = (g/1000)*sp;
+  const energy = (w/1000)*h*kwh;
+  const depr = (pc/life)*h;
+  const labor = lb*lbh;
+  const subtotal = mat + energy + depr + labor + fixCost + pkg;
+  const failCost = subtotal*(fail/100);
+  const totalCost = subtotal + failCost;
+  const price = totalCost * (1 + margin/100);
+  const priceWithMkt = price / (1 - mkt/100);
+  const profit = price - totalCost;
+  const minPrice = totalCost * 1.10;
+
+  document.getElementById('cr-mat').textContent = fmt(mat);
+  document.getElementById('cr-energy').textContent = fmt(energy);
+  document.getElementById('cr-labor').textContent = fmt(labor);
+  document.getElementById('cr-depr').textContent = fmt(depr);
+  document.getElementById('cr-fixed').textContent = fmt(fixCost);
+  document.getElementById('cr-fail').textContent = fmt(failCost);
+  document.getElementById('cr-pkg').textContent = fmt(pkg);
+  document.getElementById('cr-total').textContent = fmt(totalCost);
+  document.getElementById('cr-price').textContent = fmt(price);
+  document.getElementById('cr-profit').textContent = fmt(profit);
+  document.getElementById('cr-pct').textContent = totalCost > 0 ? (profit/price*100).toFixed(1)+'%' : '0%';
+  document.getElementById('cr-min').textContent = fmt(minPrice);
+  document.getElementById('cr-mktprice').textContent = fmt(priceWithMkt);
+
+  const tip = profit < 0 ? '⚠️ Prejuízo! Aumente a margem ou reduza custos.'
+    : profit < totalCost*0.15 ? '💡 Margem baixa. Considere aumentar para pelo menos 30%.'
+    : profit > totalCost ? '🚀 Ótima margem! Seu produto está bem precificado.'
+    : `✅ Preço saudável. Lucro de ${fmt(profit)} por peça.`;
+  document.getElementById('cr-tip').textContent = tip;
+
+  // Update pie chart
+  const data = [mat, energy, labor, depr, fixCost, failCost, pkg].map(v => Math.max(0, parseFloat(v.toFixed(2))));
+  if(costChart){
+    costChart.data.datasets[0].data = data;
+    costChart.update('none');
+  }
+}
+
+window.addEventListener('load', () => {
+  const ctx = document.getElementById('costChart').getContext('2d');
+  costChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Filamento','Energia','Mão de obra','Depreciação','Custos fixos','Falhas','Embalagem'],
+      datasets: [{
+        data: [0,0,0,0,0,0,0],
+        backgroundColor: ['#0d9cf0','#1a6ef5','#60c8ff','#9b6dff','#f59e0b','#f04060','#10d090'],
+        borderWidth: 2,
+        borderColor: '#0c1728'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              const total = context.dataset.data.reduce((a,b)=>a+b,0);
+              const pct = total > 0 ? (context.parsed/total*100).toFixed(1) : 0;
+              return ` ${context.label}: R$ ${context.parsed.toFixed(2)} (${pct}%)`;
+            }
+          }
+        }
+      }
+    }
+  });
+  updateCalc();
+});
+
+// ─── ROI CALCULATOR ───
+let roiChart;
+function calcROI(){
+  const invest = parseFloat(document.getElementById('r-invest').value)||0;
+  const qty = parseFloat(document.getElementById('r-qty').value)||0;
+  const price = parseFloat(document.getElementById('r-price').value)||0;
+  const cost = parseFloat(document.getElementById('r-cost').value)||0;
+  const fixCost = parseFloat(document.getElementById('r-fixcost').value)||0;
+
+  document.getElementById('rl-inv').textContent = 'R$'+fmtN(Math.round(invest));
+  document.getElementById('rl-qty').textContent = Math.round(qty);
+  document.getElementById('rl-price').textContent = 'R$'+Math.round(price);
+  document.getElementById('rl-cost').textContent = 'R$'+Math.round(cost);
+  document.getElementById('rl-fix').textContent = 'R$'+Math.round(fixCost);
+
+  const fat = qty * price;
+  const totalCost = qty * cost + fixCost;
+  const lucro = fat - totalCost;
+  const mg = fat > 0 ? (lucro/fat*100) : 0;
+  const pb = lucro > 0 ? Math.ceil(invest / lucro) : 999;
+  const anual = lucro * 12;
+  const roi = invest > 0 ? (anual/invest*100) : 0;
+
+  document.getElementById('roi-fat').textContent = 'R$'+fmtN(Math.round(fat));
+  document.getElementById('roi-lucro').textContent = 'R$'+fmtN(Math.round(lucro));
+  document.getElementById('roi-mg').textContent = mg.toFixed(1)+'%';
+  document.getElementById('roi-pb').textContent = pb >= 99 ? '99+' : pb;
+  document.getElementById('roi-anual').textContent = 'R$'+fmtN(Math.round(anual));
+  document.getElementById('roi-roi').textContent = roi.toFixed(0)+'%';
+
+  const months = Array.from({length:12},(_,i)=>i+1);
+  const cumulative = months.map(m => Math.max(0, m*lucro - invest));
+
+  const tip = lucro < 0 ? '⚠️ Operação deficitária. Aumente o preço ou reduza custos.'
+    : pb < 6 ? `🚀 Payback de ${pb} meses! Excelente retorno.`
+    : pb < 12 ? `✅ Payback de ${pb} meses. Bom negócio!`
+    : `⏳ Payback de ${pb} meses. Considere aumentar volume ou ticket.`;
+  document.getElementById('roi-tip').textContent = tip;
+
+  if(roiChart){
+    roiChart.data.labels = months.map(m=>`M${m}`);
+    roiChart.data.datasets[0].data = cumulative;
+    roiChart.update('none');
+  }
+}
+
+window.addEventListener('load', () => {
+  const ctx2 = document.getElementById('roiChart').getContext('2d');
+  roiChart = new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: Array.from({length:12},(_,i)=>`M${i+1}`),
+      datasets: [{
+        label: 'Lucro acumulado (R$)',
+        data: Array(12).fill(0),
+        borderColor: '#0d9cf0',
+        backgroundColor: 'rgba(13,156,240,0.08)',
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: '#0d9cf0',
+        pointRadius: 4,
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` R$ ${fmtN(Math.round(ctx.parsed.y))}`
+          }
+        }
+      },
+      scales: {
+        x: { ticks: { color: '#3d6080', font:{size:11} }, grid: { color: 'rgba(13,156,240,0.05)' } },
+        y: { ticks: { color: '#3d6080', font:{size:11}, callback: v => 'R$'+fmtN(v) }, grid: { color: 'rgba(13,156,240,0.05)' } }
+      }
+    }
+  });
+  calcROI();
+});
+</script>
+</body>
+</html>
